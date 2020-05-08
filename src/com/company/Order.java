@@ -25,7 +25,7 @@ public class Order {
                 ", date=" + date +
                 ", user=" + user +
                 ", items=" + items +
-                '}';
+                '}'+'\n';
 
 
     }

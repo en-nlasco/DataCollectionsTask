@@ -1,14 +1,21 @@
 package com.company;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Item {
-    public long id;
-    public String title;
-    public Type type;
+    private long id;
+    private final String title;
+    private final Type type;
+    private double price;
 
-    public Item(long id, String title, Type type) {
-        this.id = id;
+    public Item(String title, Type type) {
+        do {
+            long rand=new Random().nextLong();
+            if (rand>0)
+                this.id =rand ;
+        }
+        while (this.id<=0);
         this.title = title;
         this.type = type;
     }
@@ -17,9 +24,29 @@ public class Item {
     public String toString() {
         return "Item{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", type=" + type +
+                ", '" + title + '\'' +
+                ", from type: " + type +
                 '}';
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override

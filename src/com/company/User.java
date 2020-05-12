@@ -1,33 +1,51 @@
 package com.company;
 
-import java.util.*;
 
-public class User {
-    public long id;
-    public String userName;
-    public Map<String, Address> addresses;
-    public List<Item> basket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class User extends AbstractUser {
+    private Map<String, Address> addresses;
+    private List<Item> basket;
 
 
     public User(String userName) {
-        this.id = new Random().nextLong();
-        this.userName = userName;
-        this.addresses=new HashMap<>();
-        this.basket=new ArrayList<>();
+        super(userName);
+        this.addresses = new HashMap<>();
+        this.basket = new ArrayList<>();
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName +
-                '}';
+        return "User: " + super.toString();
     }
-     public void addAddress(String type, Address address){
-        this.addresses.put(type, address);
-     }
 
-     public void addToBasket(Item item){
+    @Override
+    public void logIn() {
+        System.out.println("Log in as an User");
+    }
+
+    public Map<String, Address> getAddresses() {
+        return addresses;
+    }
+
+    public List<Item> getBasket() {
+        return basket;
+    }
+
+    public void setBasket(List<Item> basket) {
+        this.basket = basket;
+    }
+
+    public void addToBasket(Item item) {
         this.basket.add(item);
-     }
+    }
+
+    public void addAddress(String type, Address address) {
+        this.addresses.put(type, address);
+    }
+
+
 }

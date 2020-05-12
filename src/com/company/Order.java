@@ -1,32 +1,16 @@
 package com.company;
 
-import java.time.*;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Random;
 
+public interface Order {
+    double sum();
 
-public class Order {
-    public long id;
-    public LocalDateTime date;
-    public User user;
-    public List<Item> items;
+    int count();
 
-    public Order(User user, List<Item> items) {
-        this.id = new Random().nextLong();
-        this.date = LocalDateTime.now();
-        this.user = user;
-        this.items = items;
-    }
+    LocalDateTime date();
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", date=" + date +
-                ", user=" + user +
-                ", items=" + items +
-                '}'+'\n';
+    void setStatus(Status status);
 
-
-    }
+    List<Item> getItems();
 }

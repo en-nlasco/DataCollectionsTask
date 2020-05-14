@@ -11,7 +11,7 @@ public class Generics {
         Video video1 = new Video("ProTV News", 35);
         Newspaper newspaper1 = new Newspaper("Flux", 30, 35000);
 
-        Library<Book> books = new Library<Book>("Book Library");
+        Library<Book> books = new Library<>("Book Library");
         books.storeMedia(book1);
         books.storeMedia(new Book("Idiot", LocalDate.parse("2005-02-10"), 500, "Fedor Dostoyevsky", 3));
         books.storeMedia(new Book("Financier", LocalDate.parse("2012-12-12"), 274, "Theodore Dreiser", 2));
@@ -28,7 +28,7 @@ public class Generics {
         videoList.add(new Video("OOP Tutorial", LocalDate.parse("2009-07-24"), 125));
         videoList.add(new Video("BBC Digest", LocalDate.parse("2020-02-29"), 60));
         videoList.add(new Video("WW II Documentary", LocalDate.parse("2018-05-09"), 245));
-        Library<Video> videos = new Library<Video>("Video Library", videoList);
+        Library<Video> videos = new Library<>("Video Library", videoList);
         videos.storeMedia(video1);
         System.out.println(videos.getName() + ":\n" + videos.getStorage());
         videos.retrieveMedia(videos.getStorage());
@@ -53,5 +53,13 @@ public class Generics {
         newspapers.retrieveMedia("TIMES");
         System.out.println(newspapers.getName() + ":\n" + newspapers.getStorage());
 
+
+        BookLibrary bookLibrary= new BookLibrary("Central Library", books.getStorage());
+        System.out.println(bookLibrary.getName()+'\n'+bookLibrary.getStorage());
+        bookLibrary.storeBook(new Book("Eat,Pray,Love",LocalDate.parse("2018-07-07"), 227,"Elizabeth Gilbert", 1));
+        System.out.println(bookLibrary.getName()+'\n'+bookLibrary.getStorage());
+        bookLibrary.retrieveBook("Pride and Prejudice");
+        System.out.println(bookLibrary.getName()+'\n'+bookLibrary.getStorage());
     }
+
 }
